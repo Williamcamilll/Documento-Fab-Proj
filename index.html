@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fábrica de Projetos — Pesquisa (UNIMAR)</title>
+  <meta name="description" content="Documento da Fábrica de Projetos — Pesquisa sobre a empresa/órgão, público-alvo, produtos (digital/segurança) e proposta de solução.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main class="page" aria-label="Documento da Fábrica de Projetos">
+    <header class="top">
+      <div class="brand">
+        <div class="seal" aria-hidden="true">U</div>
+        <div class="brandText">
+          <strong>Universidade de Marília  UNIMAR</strong>
+          <span>Trabalho acadêmico • Fábrica de Projetos</span>
+        </div>
+      </div>
+
+      <div class="docMeta">
+        <div><b>Curso:</b> Análise e Desenvolvimento de Sistemas (ADS)</div>
+        <div><b>Termo:</b> 3º termo • <b>Turma:</b> B</div>
+        <div><b>Professor:</b> Fábio</div>
+      </div>
+    </header>
+
+    <section class="content">
+      <div class="titleRow">
+        <div>
+          <h1>Fábrica de Projetos  Pesquisa</h1>
+          <p class="subtitle">
+          ----------------------
+          </p>
+        </div>
+
+        <div class="actions no-print">
+          <button class="btn btn--ghost" id="btnCopyAll" type="button">Copiar tudo</button>
+          <button class="btn" id="btnPrint" type="button">Imprimir / PDF</button>
+        </div>
+      </div>
+
+      <div class="infoGrid">
+        <div class="info">
+          <strong>Secretaria da Saúde</strong>
+        </div>
+
+        <div class="info">
+          <small>Grupo</small>
+          <strong>Equipe — Fábrica de Projetos</strong>
+          <span class="mini">Líder: <b>Diego Fabretti</b></span>
+        </div>
+      </div>
+
+      <div class="group card">
+        <div class="groupHead">
+          <h2>Integrantes</h2>
+          <button class="btn btn--soft no-print" data-copy="#groupList" type="button">Copiar lista</button>
+        </div>
+
+        <ul id="groupList" class="list">
+          <li>William Camilo</li>
+          <li>Gabriel Di Fiore</li>
+          <li>Giovani Sales</li>
+          <li>Diego Fabretti <span class="pill">Líder</span></li>
+          <li>Leonardo Pontolio</li>
+          <li>Juliana Miranda</li>
+          <li>Caio Felipe</li>
+          <li>Lucas Teixeira</li>
+        </ul>
+      </div>
+
+      <div class="sectionTitle">
+        <span class="dot" aria-hidden="true"></span>
+        <h2>Perguntas e respostas</h2>
+      </div>
+
+      <article class="qa card" id="q1">
+        <div class="qaTop">
+          <p class="q">1 — O que faz a empresa?</p>
+          <button class="btn btn--soft no-print" data-copy="#q1 .a" type="button">Copiar</button>
+        </div>
+        <p class="a">
+          A Secretaria da Saúde é responsável por organizar e coordenar os serviços de saúde pública.
+          Na prática, ela ajuda a manter a estrutura do SUS funcionando, apoia unidades como postos e hospitais,
+          promove campanhas de prevenção e vacinação, acompanha indicadores (demanda, filas e surtos) e também
+          fiscaliza serviços quando necessário. O objetivo é garantir atendimento e orientar ações que melhorem
+          a saúde da população.
+        </p>
+      </article>
+
+      <article class="qa card" id="q2">
+        <div class="qaTop">
+          <p class="q">2 — Qual é o principal público-alvo da empresa?</p>
+          <button class="btn btn--soft no-print" data-copy="#q2 .a" type="button">Copiar</button>
+        </div>
+        <p class="a">
+          O público-alvo é a população em geral, principalmente quem depende do SUS.
+          Isso envolve pessoas de todas as idades, com atenção especial para grupos que costumam precisar mais do sistema,
+          como crianças, idosos, gestantes e pessoas com doenças crônicas.
+        </p>
+      </article>
+
+      <article class="qa card" id="q3">
+        <div class="qaTop">
+          <p class="q">3 — Quais são os produtos (digital ou segurança) que a empresa atua?</p>
+          <button class="btn btn--soft no-print" data-copy="#q3 .a" type="button">Copiar</button>
+        </div>
+        <p class="a">
+          Na parte digital, a Secretaria utiliza (ou se apoia) em sistemas como prontuário eletrônico,
+          agendamento de consultas e exames, controle de vacinação, regulação de leitos e relatórios para gestão.
+          Na parte de segurança, o foco é proteger dados sensíveis dos pacientes: controle de acesso por perfil,
+          rastreio de acessos (logs), boas práticas de senha, backups e conformidade com a LGPD.
+        </p>
+      </article>
+
+      <article class="qa card" id="q4">
+        <div class="qaTop">
+          <p class="q">4 — Pense em uma solução junto ao grupo</p>
+          <button class="btn btn--soft no-print" data-copy="#q4 .a" type="button">Copiar</button>
+        </div>
+        <p class="a">
+          Estamos elaborando, junto ao grupo
+        </p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <span>UNIMAR • ADS • 3º termo — Turma B</span>
+      <span class="muted">Fábrica de Projetos — Documento de pesquisa</span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
