@@ -1,23 +1,29 @@
 :root{
+  /* Base */
   --bg: #f4f6fb;
   --paper: #ffffff;
-  --ink: #0f172a;
+  --ink: #0b1220;
   --muted: #475569;
   --line: #e2e8f0;
 
-  --brand: #0b4ea2;      /* UNIMAR / acadêmico */
-  --brand2: #18a566;     /* apoio */
+  /* Identidade institucional (Prefeitura / Saúde) */
+  --brand: #0b4ea2;      /* azul institucional */
+  --brand2: #18a566;     /* verde saúde */
+  --brand3: #0ea5e9;     /* apoio (azul claro) */
 
   --radius: 18px;
-  --shadow: 0 18px 40px rgba(15, 23, 42, .12);
+  --radius2: 22px;
+
+  --shadow: 0 18px 44px rgba(2, 6, 23, .12);
+  --shadow2: 0 10px 22px rgba(2, 6, 23, .10);
 
   --softA: rgba(11,78,162,.10);
   --softB: rgba(24,165,102,.10);
+
+  --focus: rgba(14,165,233,.35);
 }
 
-*{
-  box-sizing: border-box;
-}
+*{ box-sizing: border-box; }
 
 html, body{
   margin: 0;
@@ -29,26 +35,38 @@ body{
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(11,78,162,.14), transparent 55%),
-    radial-gradient(1000px 600px at 95% 0%, rgba(24,165,102,.12), transparent 55%),
-    linear-gradient(180deg, #f6f8ff 0%, var(--bg) 55%, #f6f8ff 100%);
+    radial-gradient(1200px 650px at 10% -10%, rgba(11,78,162,.16), transparent 55%),
+    radial-gradient(1000px 650px at 95% 0%, rgba(24,165,102,.14), transparent 55%),
+    linear-gradient(180deg, #f7f9ff 0%, var(--bg) 55%, #f7f9ff 100%);
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
-  padding: 24px 12px;
+  padding: 26px 12px;
 }
 
 /* =========================
    PÁGINA (DOCUMENTO)
 ========================= */
 .page{
-  max-width: 980px;
+  max-width: 1000px;
   margin: 0 auto;
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius2);
   box-shadow: var(--shadow);
   overflow: hidden;
+  position: relative;
 }
+
+/* faixa superior institucional */
+.page::before{
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--brand), var(--brand2), var(--brand3));
+}
+
+/* TOPBAR */
 .top{
   display: flex;
   align-items: center;
@@ -62,26 +80,41 @@ body{
     linear-gradient(90deg, rgba(11,78,162,.10), rgba(24,165,102,.08));
 }
 
+/* área da marca */
 .brand{
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
+/* selo mais “oficial” */
 .seal{
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   display: grid;
   place-items: center;
-  font-weight: 800;
+  font-weight: 900;
   color: #fff;
   background: linear-gradient(135deg, var(--brand), var(--brand2));
+  box-shadow: 0 12px 26px rgba(11,78,162,.22);
+  position: relative;
+  isolation: isolate;
+}
+
+.seal::after{
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.35);
+  pointer-events: none;
 }
 
 .brandText strong{
   display: block;
   font-size: 14px;
+  letter-spacing: -0.01em;
 }
 
 .brandText span{
@@ -90,33 +123,59 @@ body{
   color: var(--muted);
 }
 
+/* meta com cara de documento */
 .docMeta{
   font-size: 12px;
   color: var(--muted);
   line-height: 1.6;
+  background: rgba(255,255,255,.6);
+  border: 1px solid rgba(226,232,240,.8);
+  padding: 10px 12px;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
 }
 
-.docMeta b{
-  color: var(--ink);
-}
+.docMeta b{ color: var(--ink); }
 
-.content{
-  padding: 26px 22px;
+/* CONTEÚDO */
+.content{ padding: 26px 22px; }
+
+.titleRow{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 /* TÍTULOS */
 h1{
   margin: 0 0 6px;
   font-size: 26px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .subtitle{
   margin: 0 0 18px;
   font-size: 14px;
   color: var(--muted);
+  position: relative;
+  padding-left: 14px;
 }
 
+.subtitle::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+}
+
+/* BOTÕES */
 .actions{
   display: flex;
   gap: 10px;
@@ -130,13 +189,23 @@ h1{
   padding: 10px 14px;
   border-radius: 14px;
   cursor: pointer;
-  font-weight: 700;
-  transition: transform .12s ease, box-shadow .12s ease;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  box-shadow: 0 8px 18px rgba(2,6,23,.08);
 }
 
 .btn:hover{
   transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(15,23,42,.15);
+  box-shadow: 0 12px 22px rgba(2,6,23,.12);
+  border-color: rgba(11,78,162,.35);
+}
+
+.btn:active{ transform: translateY(0); }
+
+.btn:focus-visible{
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
 }
 
 .btn--soft{
@@ -148,17 +217,21 @@ h1{
   border: 1px dashed rgba(11,78,162,.35);
 }
 
+/* CARDS */
 .card{
   background:
     radial-gradient(700px 280px at 10% 0%, var(--softA), transparent 55%),
     radial-gradient(700px 280px at 90% 0%, var(--softB), transparent 55%),
-    #fff;
-  border: 1px solid var(--line);
+    rgba(255,255,255,.92);
+  border: 1px solid rgba(226,232,240,.95);
   border-radius: 18px;
   padding: 16px;
   margin-bottom: 16px;
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(6px);
 }
 
+/* GRID INFO */
 .infoGrid{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -166,14 +239,25 @@ h1{
   margin-bottom: 18px;
 }
 
+.info{
+  padding: 14px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(226,232,240,.95);
+  background: rgba(255,255,255,.85);
+  box-shadow: 0 8px 18px rgba(2,6,23,.06);
+}
+
 .info small{
   display: block;
   font-size: 12px;
   color: var(--muted);
+  margin-bottom: 4px;
 }
 
 .info strong{
+  display: block;
   font-size: 14px;
+  letter-spacing: -0.01em;
 }
 
 .mini{
@@ -181,6 +265,7 @@ h1{
   color: var(--muted);
 }
 
+/* TÍTULO DE SEÇÃO */
 .sectionTitle{
   display: flex;
   align-items: center;
@@ -191,6 +276,7 @@ h1{
 .sectionTitle h2{
   margin: 0;
   font-size: 16px;
+  letter-spacing: -0.01em;
 }
 
 .dot{
@@ -198,11 +284,17 @@ h1{
   height: 10px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--brand), var(--brand2));
+  box-shadow: 0 10px 18px rgba(11,78,162,.18);
 }
 
+/* LISTAS */
 .list{
   padding-left: 18px;
   line-height: 1.9;
+}
+
+.list li{
+  margin: 3px 0;
 }
 
 /* Líder */
@@ -213,33 +305,42 @@ h1{
   border-radius: 999px;
   background: rgba(11,78,162,.12);
   color: var(--brand);
-  font-weight: 700;
+  font-weight: 800;
+  border: 1px solid rgba(11,78,162,.15);
 }
 
-.qa{
-  margin-bottom: 14px;
-}
+/* Q&A */
+.qa{ margin-bottom: 14px; }
 
 .qaTop{
   display: flex;
   justify-content: space-between;
   gap: 10px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .q{
   margin: 0 0 6px;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 900;
   color: var(--brand);
+  letter-spacing: -0.01em;
 }
 
 .a{
   margin: 0;
   font-size: 14px;
   text-align: justify;
+  color: rgba(11,18,32,.92);
 }
 
+/* melhora leitura dentro da resposta quando tiver <ul> */
+.a .list{
+  margin: 10px 0 0;
+}
+
+/* FOOTER */
 .footer{
   border-top: 1px solid var(--line);
   padding: 14px 22px;
@@ -249,8 +350,12 @@ h1{
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
+  background: linear-gradient(90deg, rgba(11,78,162,.06), rgba(24,165,102,.04));
 }
 
+.muted{ opacity: .9; }
+
+/* TOAST */
 .toast{
   position: fixed;
   bottom: 18px;
@@ -259,12 +364,13 @@ h1{
   opacity: 0;
   pointer-events: none;
 
-  background: rgba(15,23,42,.9);
+  background: rgba(2,6,23,.88);
   color: #fff;
   padding: 12px 16px;
   border-radius: 14px;
   font-size: 13px;
   transition: all .2s ease;
+  box-shadow: 0 14px 26px rgba(2,6,23,.22);
 }
 
 .toast.show{
@@ -272,42 +378,60 @@ h1{
   transform: translateX(-50%) translateY(0);
 }
 
+/* RESPONSIVO */
 @media (max-width: 768px){
   h1{ font-size: 22px; }
 
   .content{ padding: 20px 16px; }
 
-  .infoGrid{
-    grid-template-columns: 1fr;
-  }
+  .infoGrid{ grid-template-columns: 1fr; }
 
-  .top{
-    padding: 16px;
-  }
+  .top{ padding: 16px; }
 
-  .docMeta{
-    width: 100%;
-  }
+  .docMeta{ width: 100%; }
 
-  .actions{
-    width: 100%;
-  }
+  .actions{ width: 100%; }
 }
 
+/* IMPRESSÃO / PDF */
 @media print{
+  /* evita fundos pesados no PDF */
   body{
-    background: #fff;
-    padding: 0;
+    background: #fff !important;
+    padding: 0 !important;
   }
 
   .page{
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
   }
 
-  .no-print{
-    display: none !important;
+  .page::before{ display: none !important; }
+
+  .top{
+    background: #fff !important;
+    border-bottom: 1px solid #d9e0ea !important;
+  }
+
+  .docMeta{
+    background: #fff !important;
+    border: 1px solid #d9e0ea !important;
+    backdrop-filter: none !important;
+  }
+
+  .card, .info{
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  .no-print{ display: none !important; }
+
+  /* margens mais bonitas no PDF */
+  @page{
+    size: A4;
+    margin: 14mm 12mm;
   }
 }
+
 
