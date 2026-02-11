@@ -34,9 +34,9 @@
     <section class="content">
       <div class="titleRow">
         <div>
-          <h1>Fábrica de Projetos  Pesquisa</h1>
+          <h1>Fábrica de Projetos — Pesquisa</h1>
           <p class="subtitle">
-          ----------------------
+            Documento de pesquisa e registro do escopo/proposta de solução do grupo.
           </p>
         </div>
 
@@ -48,7 +48,9 @@
 
       <div class="infoGrid">
         <div class="info">
+          <small>Órgão / Tema</small>
           <strong>Secretaria da Saúde</strong>
+          <span class="mini">Área: Saúde Pública • Dados sensíveis • LGPD</span>
         </div>
 
         <div class="info">
@@ -125,15 +127,144 @@
           <p class="q">4 — Pense em uma solução junto ao grupo</p>
           <button class="btn btn--soft no-print" data-copy="#q4 .a" type="button">Copiar</button>
         </div>
-        <p class="a">
-          Estamos elaborando, junto ao grupo
-        </p>
+        <div class="a">
+          <p>
+            A solução proposta pelo grupo é um <b>Sistema de Prontuário Eletrônico e Gestão de Pacientes</b> para a Secretaria da Saúde,
+            com foco em centralizar dados, agilizar o atendimento e garantir <b>sigilo</b> e <b>segurança</b> das informações.
+          </p>
+          <p>
+            O sistema permitirá cadastro e consulta de pacientes, registro de atendimentos, diagnósticos, prescrições e
+            <b>gestão de medicamentos por paciente</b> (dose, frequência e duração), além de anexar exames/documentos e registrar logs de auditoria.
+          </p>
+          <p>
+            A aplicação será desenvolvida como sistema web responsivo e poderá ser instalada como <b>PWA (app)</b> para uso em celular/tablet,
+            facilitando o trabalho em unidades de saúde.
+          </p>
+        </div>
       </article>
+
+      <!-- REGISTRO DO PROJETO (para ficar documentado no trabalho) -->
+      <div class="sectionTitle">
+        <span class="dot" aria-hidden="true"></span>
+        <h2>Registro do Projeto (Escopo e Especificação)</h2>
+      </div>
+
+      <article class="qa card" id="q5">
+        <div class="qaTop">
+          <p class="q">5 — Qual é o nome do projeto e o objetivo?</p>
+          <button class="btn btn--soft no-print" data-copy="#q5 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <p><b>Nome do projeto:</b> Sistema de Prontuário Eletrônico, Gestão de Pacientes e Medicamentos (Secretaria da Saúde).</p>
+          <p>
+            <b>Objetivo:</b> Automatizar o registro, consulta e acompanhamento de pacientes, garantindo organização dos dados,
+            segurança e confidencialidade (sigilo médico), além de permitir controle de prescrições e histórico de medicamentos por paciente.
+          </p>
+        </div>
+      </article>
+
+      <article class="qa card" id="q6">
+        <div class="qaTop">
+          <p class="q">6 — Qual é o escopo do sistema?</p>
+          <button class="btn btn--soft no-print" data-copy="#q6 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <p><b>Dentro do escopo (o sistema inclui):</b></p>
+          <ul class="list">
+            <li>Cadastro, edição e consulta de pacientes.</li>
+            <li>Cadastro e gerenciamento de usuários/profissionais (por perfil).</li>
+            <li>Registro de atendimentos médicos e histórico do paciente.</li>
+            <li>Registro de diagnósticos e orientações.</li>
+            <li><b>Prescrições e gestão de medicamentos por paciente</b> (dose, frequência, duração, status).</li>
+            <li>Armazenamento/consulta de documentos e exames (anexos).</li>
+            <li>Controle de acesso por permissões e perfis.</li>
+            <li>Logs de auditoria e rastreabilidade de ações.</li>
+            <li>Relatórios básicos para gestão.</li>
+            <li>Aplicação web responsiva com possibilidade de instalação como <b>PWA (app)</b>.</li>
+          </ul>
+
+          <p><b>Fora do escopo inicial (somente como evolução futura):</b></p>
+          <ul class="list">
+            <li>Integração real com sistemas externos (ex.: SUS).</li>
+            <li>Faturamento, convênios, cobranças ou pagamentos.</li>
+            <li>Diagnóstico automático por IA.</li>
+            <li>Aplicativo nativo (Android/iOS) — o foco é PWA.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="qa card" id="q7">
+        <div class="qaTop">
+          <p class="q">7 — Quais tecnologias serão utilizadas?</p>
+          <button class="btn btn--soft no-print" data-copy="#q7 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <ul class="list">
+            <li><b>HTML</b> para estrutura das telas.</li>
+            <li><b>CSS</b> para layout, identidade visual e responsividade.</li>
+            <li><b>JavaScript</b> para interatividade e validações.</li>
+            <li><b>SQL</b> para armazenamento e gerenciamento de dados.</li>
+            <li><b>Back-end</b> simples para autenticação, permissões e comunicação com o banco.</li>
+            <li><b>PWA</b> para permitir instalação como “app” em celular/tablet.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="qa card" id="q8">
+        <div class="qaTop">
+          <p class="q">8 — Como será a gestão de medicamentos?</p>
+          <button class="btn btn--soft no-print" data-copy="#q8 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <p>
+            A gestão de medicamentos será feita por meio de prescrições vinculadas ao atendimento do paciente,
+            registrando para cada medicamento: <b>dose</b>, <b>frequência</b>, <b>duração</b>, <b>via</b> e <b>status</b> (ativo/suspenso/finalizado).
+          </p>
+          <p>
+            Isso permite consultar de forma rápida:
+            quais remédios o paciente usa hoje, histórico completo, e quais medicamentos são mais prescritos.
+          </p>
+          <p class="mini">
+            (Opcional – fase avançada) Registrar dispensação/entrega e controle básico de estoque por lote/validade.
+          </p>
+        </div>
+      </article>
+
+      <article class="qa card" id="q9">
+        <div class="qaTop">
+          <p class="q">9 — Quais medidas de segurança serão adotadas?</p>
+          <button class="btn btn--soft no-print" data-copy="#q9 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <ul class="list">
+            <li>Autenticação por login e senha.</li>
+            <li>Senhas armazenadas de forma segura (hash).</li>
+            <li>Controle de acesso por perfil (permissões).</li>
+            <li>Restrição de acesso a dados médicos conforme papel do usuário.</li>
+            <li>Logs de auditoria (quem acessou, o que fez e quando).</li>
+            <li>Backups e medidas para evitar acessos indevidos.</li>
+            <li>Direcionamento para conformidade com a LGPD (dados sensíveis).</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="qa card" id="q10">
+        <div class="qaTop">
+          <p class="q">10 — Como o sistema evolui por fases?</p>
+          <button class="btn btn--soft no-print" data-copy="#q10 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <p><b>Fase inicial:</b> login/logout, cadastro/consulta de pacientes, cadastro de usuários, registro básico de atendimentos.</p>
+          <p><b>Fase intermediária:</b> diagnósticos, prescrições, anexos (documentos/exames) e gestão de medicamentos por paciente.</p>
+          <p><b>Fase avançada:</b> permissões por perfil, logs de auditoria, relatórios, backup/restauração e (opcional) dispensação/estoque.</p>
+        </div>
+      </article>
+
     </section>
 
     <footer class="footer">
       <span>UNIMAR • ADS • 3º termo — Turma B</span>
-      <span class="muted">Fábrica de Projetos — Documento de pesquisa</span>
+      <span class="muted">Fábrica de Projetos — Documento de pesquisa e registro do escopo</span>
     </footer>
   </main>
 
@@ -142,3 +273,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
