@@ -1,502 +1,354 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fábrica de Projetos — Sistema de Prontuário (UNIMAR)</title>
-  <meta name="description" content="Projeto — Sistema de Prontuário Eletrônico, Gestão de Pacientes e Medicamentos (Secretaria da Saúde).">
-
-  <meta name="theme-color" content="#0b3b91">
-  <meta name="color-scheme" content="light dark">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fábrica de Projetos — Pesquisa (UNIMAR)</title>
+  <meta name="description" content="Documento da Fábrica de Projetos — Pesquisa sobre o órgão, público-alvo, produtos digitais/segurança e proposta de solução." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <a class="skipLink no-print" href="#conteudo">Pular para o conteúdo</a>
+  <!-- Acessibilidade: pular para conteúdo -->
+  <a class="skipLink no-print" href="#mainContent">Pular para o conteúdo</a>
 
-  <main class="page" id="conteudo" aria-label="Documento do Projeto">
+  <!-- Drawer overlay (mobile) -->
+  <div class="drawerOverlay no-print" id="drawerOverlay" hidden></div>
 
-    <!-- CAPA (acadêmica/ABNT-like) -->
-    <section class="cover" aria-label="Capa do documento">
-      <div class="coverContent">
-        <p class="coverInstitution">UNIVERSIDADE DE MARÍLIA — UNIMAR</p>
-        <p class="coverCourse">Análise e Desenvolvimento de Sistemas (ADS) — 3º Termo — Turma B</p>
-
-        <h1 class="coverTitle">
-          PROJETO — SISTEMA DE PRONTUÁRIO ELETRÔNICO,<br>
-          GESTÃO DE PACIENTES E MEDICAMENTOS
-        </h1>
-
-        <p class="coverSubtitle">SECRETARIA DA SAÚDE</p>
-
-        <div class="coverMeta">
-          <p><b>Disciplina:</b> Fábrica de Projetos Ágeis / Desenvolvimento de Sistemas</p>
-          <p><b>Professor(a):</b> Fabio</p>
-          <p><b>Ano:</b> 2026</p>
-        </div>
-
-        <p class="coverCity">Marília — SP</p>
-      </div>
-    </section>
-
-    <!-- Cabeçalho (para navegação/visual) -->
-    <header class="top no-print" role="banner">
-      <div class="brand" aria-label="Identificação institucional">
+  <main class="page" aria-label="Documento da Fábrica de Projetos">
+    <header class="top" aria-label="Cabeçalho do documento">
+      <div class="brand">
         <div class="seal" aria-hidden="true">U</div>
         <div class="brandText">
           <strong>Universidade de Marília — UNIMAR</strong>
-          <span>Fábrica de Projetos Ágeis • Documento do Projeto</span>
+          <span>Trabalho • Fábrica de Projetos</span>
         </div>
+      </div>
+
+      <div class="topRight no-print">
+        <!-- Botão hambúrguer (mobile) -->
+        <button class="iconBtn" id="btnMenu" type="button" aria-label="Abrir sumário" aria-controls="sidebar" aria-expanded="false">
+          ☰
+        </button>
       </div>
 
       <div class="docMeta" aria-label="Metadados do documento">
-        <div><b>Curso:</b> ADS — 3º Termo • <b>Turma:</b> B</div>
-        <div><b>Órgão/Tema:</b> Secretaria da Saúde</div>
-        <div><b>Professor(a):</b> Fabio</div>
-        <div><b>Ano:</b> 2026 • <b>Versão:</b> v1.0</div>
+        <div><b>Curso:</b> Análise e Desenvolvimento de Sistemas (ADS)</div>
+        <div><b>Termo:</b> 3º termo • <b>Turma:</b> B</div>
+        <div><b>Professor:</b> Fábio</div>
       </div>
     </header>
 
-    <section class="content" aria-label="Conteúdo principal">
+    <!-- Conteúdo -->
+    <section class="content" id="mainContent" aria-label="Conteúdo do documento">
 
-      <!-- Título + Ações -->
+      <!-- Linha do título (full width no layout 2 colunas) -->
       <div class="titleRow">
         <div>
-          <h1 class="docTitle">Sistema de Prontuário Eletrônico, Gestão de Pacientes e Medicamentos</h1>
-          <p class="subtitle">Documento de pesquisa, escopo e especificação do projeto.</p>
+          <h1>Fábrica de Projetos — Relatório</h1>
+          <p class="subtitle">
+            Documento de pesquisa e registro do escopo/proposta de solução do grupo.
+          </p>
         </div>
 
-        <div class="actions no-print" aria-label="Ações do documento">
+        <div class="actions no-print">
           <button class="btn btn--ghost" id="btnCopyAll" type="button">Copiar tudo</button>
           <button class="btn" id="btnPrint" type="button">Imprimir / PDF</button>
         </div>
       </div>
 
-      <!-- Resumo -->
-      <div class="infoGrid" role="group" aria-label="Resumo do projeto">
+      <!-- Info do projeto -->
+      <div class="infoGrid" aria-label="Informações principais">
         <div class="info">
-          <small>Projeto</small>
-          <strong>Prontuário Eletrônico + Gestão de Pacientes</strong>
-          <span class="mini">Dados sensíveis • LGPD • Sigilo médico</span>
+          <small>Órgão / Tema</small>
+          <strong>Secretaria da Saúde</strong>
+          <span class="mini">Área: Saúde Pública • Dados sensíveis • LGPD</span>
         </div>
 
         <div class="info">
-          <small>Entrega</small>
-          <strong>Aplicação Web Responsiva (PWA)</strong>
-          <span class="mini">Acesso por perfil • Auditoria • Prescrições</span>
+          <small>Grupo</small>
+          <strong>Equipe — Fábrica de Projetos</strong>
+          <span class="mini">Líder: <b>Diego Fabretti</b></span>
         </div>
       </div>
 
-      <!-- Integrantes -->
-      <section class="group card" id="integrantes" aria-label="Integrantes do grupo">
+      <!-- Sidebar / Sumário (Desktop: coluna esquerda / Mobile: Drawer) -->
+      <aside class="sidebarWrap no-print" id="sidebarWrap" aria-label="Sumário e navegação">
+        <nav class="card" id="sidebar" aria-label="Sumário">
+          <div class="sidebarHead">
+            <div>
+              <h2>Sumário</h2>
+              <p class="mini">Navegue pelas seções • Busque • Marque como concluído ✅</p>
+            </div>
+            <button class="iconBtn" id="btnCloseMenu" type="button" aria-label="Fechar sumário">✖</button>
+          </div>
+
+          <!-- O JS vai preencher aqui com links -->
+          <ol id="sumarioAuto" aria-label="Lista do sumário">
+            <!-- Preenchido automaticamente -->
+          </ol>
+
+          <div class="sidebarTip">
+            <p class="mini">
+              Dicas: <b>Ctrl+K</b> busca • <b>Ctrl+Shift+C</b> copia seção • <b>Ctrl+Shift+P</b> apresentação
+            </p>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Integrantes (full width) -->
+      <div class="group card" id="integrantes">
         <div class="groupHead">
           <h2>Integrantes</h2>
-          <button class="btn btn--soft no-print" data-copy="#listaIntegrantes" type="button">Copiar lista</button>
+          <button class="btn btn--soft no-print" data-copy="#groupList" type="button">Copiar lista</button>
         </div>
 
-        <ul id="listaIntegrantes" class="list">
-          <li><b>William Chaves Camilo</b></li>
+        <ul id="groupList" class="list">
+          <li>William Ch Camilo</li>
           <li>Gabriel Di Fiore</li>
           <li>Giovani Sales</li>
-          <li>Diego Fabretti <span class="pill" aria-label="Líder do grupo">Líder</span></li>
+          <li>Diego Fabretti <span class="pill">Líder</span></li>
           <li>Leonardo Pontolio</li>
           <li>Juliana Miranda</li>
           <li>Caio Felipe</li>
           <li>Lucas Teixeira</li>
         </ul>
+      </div>
 
-        <p class="mini">
-          Observação: os nomes foram inseridos conforme a lista enviada por você. Se algum sobrenome estiver faltando, me manda que eu ajusto.
-        </p>
-      </section>
+      <!-- Seção 1 -->
+      <div class="sectionTitle">
+        <span class="dot" aria-hidden="true"></span>
+        <h2>Perguntas sobre o projeto</h2>
+      </div>
 
-      <!-- Sumário automático -->
-      <nav class="card no-print" aria-label="Sumário">
-        <div class="groupHead">
-          <h2>Sumário</h2>
-          <button class="btn btn--soft" data-copy="#sumarioAuto" type="button">Copiar</button>
-        </div>
-        <ol id="sumarioAuto" class="list"></ol>
-        <p class="mini">O sumário é gerado automaticamente pelo <code>script.js</code>.</p>
-      </nav>
-
-      <!-- 1 -->
-      <article class="qa card" id="sec-1" data-title="1. INTRODUÇÃO">
+      <article class="qa card" id="q1" data-title="1 — O que faz a empresa?">
         <div class="qaTop">
-          <h2>1. INTRODUÇÃO</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-1" type="button">Copiar</button>
+          <p class="q">1 — O que faz a empresa?</p>
+          <button class="btn btn--soft no-print" data-copy="#q1 .a" type="button">Copiar</button>
         </div>
-        <p>
-          A informatização dos serviços públicos de saúde é essencial para garantir eficiência, segurança e qualidade no atendimento à população.
-          Muitos órgãos ainda utilizam processos manuais ou sistemas fragmentados, o que dificulta o controle de informações, aumenta o risco de erros
-          e compromete a continuidade do cuidado ao paciente.
-        </p>
-        <p>
-          Diante desse cenário, este projeto propõe o desenvolvimento de um Sistema de Prontuário Eletrônico e Gestão de Pacientes, voltado para a
-          Secretaria da Saúde, com foco na organização de dados, sigilo das informações médicas e controle completo de atendimentos, prescrições e medicamentos.
+        <p class="a">
+          A Secretaria da Saúde é responsável por organizar e coordenar os serviços de saúde pública.
+          Na prática, ela ajuda a manter a estrutura do SUS funcionando, apoia unidades como postos e hospitais,
+          promove campanhas de prevenção e vacinação, acompanha indicadores (demanda, filas e surtos) e também
+          fiscaliza serviços quando necessário. O objetivo é garantir atendimento e orientar ações que melhorem
+          a saúde da população.
         </p>
       </article>
 
-      <!-- 2 -->
-      <article class="qa card" id="sec-2" data-title="2. OBJETIVO DO PROJETO">
+      <article class="qa card" id="q2" data-title="2 — Qual é o principal público-alvo?">
         <div class="qaTop">
-          <h2>2. OBJETIVO DO PROJETO</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-2" type="button">Copiar</button>
+          <p class="q">2 — Qual é o principal público-alvo da empresa?</p>
+          <button class="btn btn--soft no-print" data-copy="#q2 .a" type="button">Copiar</button>
         </div>
-        <p>
-          O objetivo deste projeto é automatizar o registro, consulta e acompanhamento de pacientes, garantindo segurança, rastreabilidade e organização das
-          informações, além de permitir a gestão de prescrições e medicamentos por paciente, com possibilidade de uso em dispositivos móveis.
+        <p class="a">
+          O público-alvo é a população em geral, principalmente quem depende do SUS.
+          Isso envolve pessoas de todas as idades, com atenção especial para grupos que costumam precisar mais do sistema,
+          como crianças, idosos, gestantes e pessoas com doenças crônicas.
         </p>
       </article>
 
-      <!-- 3 -->
-      <article class="qa card" id="sec-3" data-title="3. ESCOPO DO PROJETO">
+      <article class="qa card" id="q3" data-title="3 — Produtos digitais e segurança">
         <div class="qaTop">
-          <h2>3. ESCOPO DO PROJETO</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-3" type="button">Copiar</button>
+          <p class="q">3 — Quais são os produtos (digital ou segurança) que a empresa atua?</p>
+          <button class="btn btn--soft no-print" data-copy="#q3 .a" type="button">Copiar</button>
         </div>
-
-        <p>O escopo deste projeto contempla o desenvolvimento de um sistema que permita:</p>
-        <ul class="list">
-          <li>Cadastro e gerenciamento de pacientes;</li>
-          <li>Cadastro e gerenciamento de usuários e profissionais da saúde;</li>
-          <li>Registro de atendimentos médicos;</li>
-          <li>Registro de diagnósticos;</li>
-          <li>Registro de prescrições médicas;</li>
-          <li>Gestão de medicamentos por paciente (dose, frequência e duração);</li>
-          <li>Histórico completo do paciente;</li>
-          <li>Armazenamento de exames e documentos;</li>
-          <li>Controle de acesso por perfil de usuário;</li>
-          <li>Auditoria e rastreabilidade das ações realizadas no sistema;</li>
-          <li>Aplicação web responsiva, com possibilidade de uso como aplicativo (PWA).</li>
-        </ul>
-
-        <p><b>Fora do escopo inicial:</b></p>
-        <ul class="list">
-          <li>Integração real com sistemas externos (ex.: SUS);</li>
-          <li>Faturamento, convênios ou pagamentos;</li>
-          <li>Diagnóstico automático ou uso de inteligência artificial;</li>
-          <li>Aplicativos nativos Android ou iOS.</li>
-        </ul>
-      </article>
-
-      <!-- 4 -->
-      <article class="qa card" id="sec-4" data-title="4. VISÃO GERAL DO SISTEMA">
-        <div class="qaTop">
-          <h2>4. VISÃO GERAL DO SISTEMA</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-4" type="button">Copiar</button>
-        </div>
-
-        <p>
-          O sistema será utilizado pela Secretaria da Saúde para centralizar e organizar informações clínicas e administrativas, garantindo sigilo médico e controle de
-          acesso. O prontuário eletrônico permitirá que profissionais autorizados tenham acesso rápido e seguro ao histórico do paciente, melhorando a qualidade do
-          atendimento e reduzindo erros.
+        <p class="a">
+          Na parte digital, a Secretaria utiliza (ou se apoia) em sistemas como prontuário eletrônico,
+          agendamento de consultas e exames, controle de vacinação, regulação de leitos e relatórios para gestão.
+          Na parte de segurança, o foco é proteger dados sensíveis dos pacientes: controle de acesso por perfil,
+          rastreio de acessos (logs), boas práticas de senha, backups e conformidade com a LGPD.
         </p>
-
-        <p>O sistema permitirá:</p>
-        <ul class="list">
-          <li>Organização completa das informações do paciente;</li>
-          <li>Continuidade do tratamento;</li>
-          <li>Redução de papel e retrabalho;</li>
-          <li>Maior controle e transparência das ações realizadas.</li>
-        </ul>
       </article>
 
-      <!-- 5 -->
-      <article class="qa card" id="sec-5" data-title="5. TECNOLOGIAS UTILIZADAS">
+      <article class="qa card" id="q4" data-title="4 — Solução proposta pelo grupo">
         <div class="qaTop">
-          <h2>5. TECNOLOGIAS UTILIZADAS</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-5" type="button">Copiar</button>
+          <p class="q">4 — Pense em uma solução junto ao grupo</p>
+          <button class="btn btn--soft no-print" data-copy="#q4 .a" type="button">Copiar</button>
         </div>
-
-        <p>Para o desenvolvimento inicial do projeto, serão utilizadas tecnologias simples e amplamente conhecidas:</p>
-        <ul class="list">
-          <li><b>HTML:</b> estrutura das páginas do sistema;</li>
-          <li><b>CSS:</b> layout, padronização visual e responsividade;</li>
-          <li><b>JavaScript:</b> interatividade, validações e comunicação com o back-end;</li>
-          <li><b>SQL:</b> armazenamento e gerenciamento dos dados;</li>
-          <li><b>Back-end simples:</b> responsável por autenticação, regras de negócio e segurança.</li>
-        </ul>
-
-        <p>O sistema será desenvolvido como aplicação web responsiva, com possibilidade de instalação como PWA (Progressive Web App).</p>
-      </article>
-
-      <!-- 6 -->
-      <article class="qa card" id="sec-6" data-title="6. EVOLUÇÃO DO SISTEMA">
-        <div class="qaTop">
-          <h2>6. EVOLUÇÃO DO SISTEMA</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-6" type="button">Copiar</button>
-        </div>
-
-        <h3 class="h3">Fase Inicial</h3>
-        <ul class="list">
-          <li>Login e logout;</li>
-          <li>Cadastro de pacientes;</li>
-          <li>Cadastro de usuários;</li>
-          <li>Registro básico de atendimentos.</li>
-        </ul>
-
-        <h3 class="h3">Fase Intermediária</h3>
-        <ul class="list">
-          <li>Registro de diagnósticos;</li>
-          <li>Registro de prescrições médicas;</li>
-          <li>Gestão de medicamentos por paciente;</li>
-          <li>Upload e visualização de documentos e exames.</li>
-        </ul>
-
-        <h3 class="h3">Fase Avançada</h3>
-        <ul class="list">
-          <li>Controle de permissões por perfil;</li>
-          <li>Logs de auditoria;</li>
-          <li>Relatórios gerenciais;</li>
-          <li>Backup e restauração de dados;</li>
-          <li>Controle de dispensação e estoque de medicamentos (opcional).</li>
-        </ul>
-      </article>
-
-      <!-- 7 -->
-      <article class="qa card" id="sec-7" data-title="7. DIAGRAMA DE CASOS DE USO (DESCRIÇÃO)">
-        <div class="qaTop">
-          <h2>7. DIAGRAMA DE CASOS DE USO (DESCRIÇÃO)</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-7" type="button">Copiar</button>
-        </div>
-
-        <h3 class="h3">Administrador</h3>
-        <ul class="list">
-          <li>Gerenciar usuários;</li>
-          <li>Gerenciar perfis e permissões;</li>
-          <li>Gerenciar medicamentos;</li>
-          <li>Emitir relatórios;</li>
-          <li>Consultar logs de auditoria.</li>
-        </ul>
-
-        <h3 class="h3">Atendente / Recepção</h3>
-        <ul class="list">
-          <li>Cadastrar pacientes;</li>
-          <li>Editar e consultar pacientes;</li>
-          <li>Consultar prescrições (conforme permissão);</li>
-          <li>Registrar dispensação de medicamentos (opcional).</li>
-        </ul>
-
-        <h3 class="h3">Médico / Profissional de Saúde</h3>
-        <ul class="list">
-          <li>Registrar atendimento;</li>
-          <li>Registrar diagnóstico;</li>
-          <li>Prescrever medicamentos;</li>
-          <li>Definir dose, frequência e duração;</li>
-          <li>Consultar histórico do paciente;</li>
-          <li>Anexar exames.</li>
-        </ul>
-      </article>
-
-      <!-- 8 -->
-      <article class="qa card" id="sec-8" data-title="8. MODELAGEM DO BANCO DE DADOS">
-        <div class="qaTop">
-          <h2>8. MODELAGEM DO BANCO DE DADOS</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-8" type="button">Copiar</button>
-        </div>
-
-        <h3 class="h3">Entidades Principais</h3>
-        <ul class="list">
-          <li>Perfis</li>
-          <li>Usuários</li>
-          <li>Pacientes</li>
-          <li>Atendimentos</li>
-          <li>Diagnósticos</li>
-          <li>Prescrições</li>
-          <li>Medicamentos</li>
-          <li>Prescrição_Itens</li>
-          <li>Documentos</li>
-          <li>Logs_Auditoria</li>
-        </ul>
-
-        <h3 class="h3">Relacionamentos</h3>
-        <ul class="list">
-          <li>Um perfil pode estar associado a vários usuários;</li>
-          <li>Um paciente pode possuir vários atendimentos;</li>
-          <li>Um atendimento pertence a um paciente e a um profissional;</li>
-          <li>Um atendimento pode conter vários diagnósticos;</li>
-          <li>Um atendimento pode conter várias prescrições;</li>
-          <li>Uma prescrição pode conter vários medicamentos;</li>
-          <li>Um usuário pode gerar vários registros de auditoria.</li>
-        </ul>
-      </article>
-
-      <!-- 9 -->
-      <article class="qa card" id="sec-9" data-title="9. GESTÃO DE MEDICAMENTOS">
-        <div class="qaTop">
-          <h2>9. GESTÃO DE MEDICAMENTOS</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-9" type="button">Copiar</button>
-        </div>
-
-        <p>
-          O módulo de Gestão de Medicamentos permitirá registrar quais medicamentos cada paciente deve utilizar, com base nas prescrições médicas realizadas
-          durante os atendimentos.
-        </p>
-
-        <p>Cada prescrição conterá:</p>
-        <ul class="list">
-          <li>Nome do medicamento;</li>
-          <li>Dose;</li>
-          <li>Frequência;</li>
-          <li>Via de administração;</li>
-          <li>Duração do tratamento;</li>
-          <li>Data de início e término;</li>
-          <li>Status (ativo, suspenso ou finalizado).</li>
-        </ul>
-
-        <p>O sistema permitirá consultar:</p>
-        <ul class="list">
-          <li>Medicamentos ativos por paciente;</li>
-          <li>Histórico completo de medicamentos;</li>
-          <li>Medicamentos mais prescritos.</li>
-        </ul>
-      </article>
-
-      <!-- 10 -->
-      <article class="qa card" id="sec-10" data-title="10. ARQUITETURA DO SISTEMA">
-        <div class="qaTop">
-          <h2>10. ARQUITETURA DO SISTEMA</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-10" type="button">Copiar</button>
-        </div>
-
-        <p>O sistema seguirá uma arquitetura em camadas:</p>
-        <div class="diagram">
-          <div class="layer">Front-end (HTML, CSS, JavaScript)</div>
-          <div class="arrow" aria-hidden="true">↓</div>
-          <div class="layer">Back-end (autenticação, regras de negócio e segurança)</div>
-          <div class="arrow" aria-hidden="true">↓</div>
-          <div class="layer">Banco de Dados SQL</div>
-        </div>
-
-        <p>A aplicação será compatível com computadores, tablets e celulares.</p>
-      </article>
-
-      <!-- 11 -->
-      <article class="qa card" id="sec-11" data-title="11. SEGURANÇA E SIGILO DAS INFORMAÇÕES">
-        <div class="qaTop">
-          <h2>11. SEGURANÇA E SIGILO DAS INFORMAÇÕES</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-11" type="button">Copiar</button>
-        </div>
-
-        <p>Considerando o caráter governamental e o uso de dados sensíveis, o sistema contará com:</p>
-        <ul class="list">
-          <li>Autenticação por login e senha;</li>
-          <li>Senhas armazenadas com hash;</li>
-          <li>Controle de acesso por perfil;</li>
-          <li>Restrição de acesso a informações médicas;</li>
-          <li>Registro de todas as ações no sistema (logs de auditoria);</li>
-          <li>Prevenção de acessos não autorizados.</li>
-        </ul>
-      </article>
-
-      <!-- 12 -->
-      <article class="qa card" id="sec-12" data-title="12. REQUISITOS DO SISTEMA">
-        <div class="qaTop">
-          <h2>12. REQUISITOS DO SISTEMA</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-12" type="button">Copiar</button>
-        </div>
-
-        <h3 class="h3">Requisitos Funcionais</h3>
-        <ul class="list">
-          <li>Cadastro, edição e consulta de pacientes;</li>
-          <li>Cadastro e gerenciamento de usuários;</li>
-          <li>Registro de atendimentos médicos;</li>
-          <li>Registro de diagnósticos;</li>
-          <li>Registro de prescrições e medicamentos;</li>
-          <li>Armazenamento de documentos;</li>
-          <li>Emissão de relatórios;</li>
-          <li>Registro de logs de auditoria.</li>
-        </ul>
-
-        <h3 class="h3">Requisitos Não Funcionais</h3>
-        <ul class="list">
-          <li>Segurança e confidencialidade dos dados;</li>
-          <li>Controle de acesso por perfil;</li>
-          <li>Facilidade de uso;</li>
-          <li>Responsividade;</li>
-          <li>Possibilidade de expansão futura.</li>
-        </ul>
-      </article>
-
-      <!-- 13 -->
-      <article class="qa card" id="sec-13" data-title="13. FLUXO DE UTILIZAÇÃO DO SISTEMA">
-        <div class="qaTop">
-          <h2>13. FLUXO DE UTILIZAÇÃO DO SISTEMA</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-13" type="button">Copiar</button>
-        </div>
-
-        <ol class="list">
-          <li>O atendente cadastra o paciente;</li>
-          <li>O médico acessa o cadastro do paciente;</li>
-          <li>O médico registra o atendimento;</li>
-          <li>O médico registra diagnóstico e prescrição;</li>
-          <li>Os medicamentos ficam vinculados ao paciente;</li>
-          <li>O histórico fica disponível conforme permissão;</li>
-          <li>Todas as ações são registradas para auditoria.</li>
-        </ol>
-
-        <h3 class="h3">Fluxo (visual)</h3>
-        <div class="diagramRow" aria-label="Fluxo visual do processo">
-          <div class="node">Cadastro</div>
-          <div class="node">Acesso</div>
-          <div class="node">Atendimento</div>
-          <div class="node">Diagnóstico</div>
-          <div class="node">Prescrição</div>
-          <div class="node">Histórico</div>
-          <div class="node">Auditoria</div>
+        <div class="a">
+          <p>
+            A solução proposta pelo grupo é um <b>Sistema de Prontuário Eletrônico e Gestão de Pacientes</b> para a Secretaria da Saúde,
+            com foco em centralizar dados, agilizar o atendimento e garantir <b>sigilo</b> e <b>segurança</b> das informações.
+          </p>
+          <p>
+            O sistema permitirá cadastro e consulta de pacientes, registro de atendimentos, diagnósticos, prescrições e
+            <b>gestão de medicamentos por paciente</b> (dose, frequência e duração), além de anexar exames/documentos e registrar logs de auditoria.
+          </p>
+          <p>
+            A aplicação será desenvolvida como sistema web responsivo e poderá ser instalada como <b>PWA (app)</b> para uso em celular/tablet,
+            facilitando o trabalho em unidades de saúde.
+          </p>
         </div>
       </article>
 
-      <!-- 14 -->
-      <article class="qa card" id="sec-14" data-title="14. POSSÍVEIS EVOLUÇÕES FUTURAS">
-        <div class="qaTop">
-          <h2>14. POSSÍVEIS EVOLUÇÕES FUTURAS</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-14" type="button">Copiar</button>
-        </div>
+      <!-- Seção 2 -->
+      <div class="sectionTitle">
+        <span class="dot" aria-hidden="true"></span>
+        <h2>Registro do Projeto (Escopo e Especificação)</h2>
+      </div>
 
-        <ul class="list">
-          <li>Integração com sistemas do SUS;</li>
-          <li>Assinatura digital de prontuários;</li>
-          <li>Criptografia avançada de dados;</li>
-          <li>Relatórios estatísticos;</li>
-          <li>Notificações no aplicativo (PWA);</li>
-          <li>Hospedagem em nuvem governamental.</li>
-        </ul>
+      <article class="qa card" id="q5" data-title="5 — Nome do projeto e objetivo">
+        <div class="qaTop">
+          <p class="q">5 — Qual é o nome do projeto e o objetivo?</p>
+          <button class="btn btn--soft no-print" data-copy="#q5 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <p><b>Nome do projeto:</b> Sistema de Prontuário Eletrônico, Gestão de Pacientes e Medicamentos (Secretaria da Saúde).</p>
+          <p>
+            <b>Objetivo:</b> Automatizar o registro, consulta e acompanhamento de pacientes, garantindo organização dos dados,
+            segurança e confidencialidade (sigilo médico), além de permitir controle de prescrições e histórico de medicamentos por paciente.
+          </p>
+        </div>
       </article>
 
-      <!-- 15 -->
-      <article class="qa card" id="sec-15" data-title="15. CONCLUSÃO">
+      <article class="qa card" id="q6" data-title="6 — Escopo do sistema">
         <div class="qaTop">
-          <h2>15. CONCLUSÃO</h2>
-          <button class="btn btn--soft no-print" data-copy="#sec-15" type="button">Copiar</button>
+          <p class="q">6 — Qual é o escopo do sistema?</p>
+          <button class="btn btn--soft no-print" data-copy="#q6 .a" type="button">Copiar</button>
         </div>
+        <div class="a">
+          <p><b>Dentro do escopo (o sistema inclui):</b></p>
+          <ul class="list">
+            <li>Cadastro, edição e consulta de pacientes.</li>
+            <li>Cadastro e gerenciamento de usuários/profissionais (por perfil).</li>
+            <li>Registro de atendimentos médicos e histórico do paciente.</li>
+            <li>Registro de diagnósticos e orientações.</li>
+            <li><b>Prescrições e gestão de medicamentos por paciente</b> (dose, frequência, duração, status).</li>
+            <li>Armazenamento/consulta de documentos e exames (anexos).</li>
+            <li>Controle de acesso por permissões e perfis.</li>
+            <li>Logs de auditoria e rastreabilidade de ações.</li>
+            <li>Relatórios básicos para gestão.</li>
+            <li>Aplicação web responsiva com possibilidade de instalação como <b>PWA (app)</b>.</li>
+          </ul>
 
-        <p>
-          O projeto propõe uma solução completa, segura e escalável para a Secretaria da Saúde, permitindo melhor organização das informações,
-          controle de medicamentos por paciente e maior eficiência no atendimento. O sistema foi planejado para evoluir conforme as necessidades
-          do setor público, respeitando princípios de segurança, sigilo e usabilidade, alinhados à formação do curso de Análise e Desenvolvimento de Sistemas.
-        </p>
+          <p><b>Fora do escopo inicial (somente como evolução futura):</b></p>
+          <ul class="list">
+            <li>Integração real com sistemas externos (ex.: SUS).</li>
+            <li>Faturamento, convênios, cobranças ou pagamentos.</li>
+            <li>Diagnóstico automático por IA.</li>
+            <li>Aplicativo nativo (Android/iOS) — o foco é PWA.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="qa card" id="q7" data-title="7 — Tecnologias utilizadas">
+        <div class="qaTop">
+          <p class="q">7 — Quais tecnologias serão utilizadas?</p>
+          <button class="btn btn--soft no-print" data-copy="#q7 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <ul class="list">
+            <li><b>HTML</b> para estrutura das telas.</li>
+            <li><b>CSS</b> para layout, identidade visual e responsividade.</li>
+            <li><b>JavaScript</b> para interatividade e validações.</li>
+            <li><b>SQL</b> para armazenamento e gerenciamento de dados.</li>
+            <li><b>Back-end</b> simples para autenticação, permissões e comunicação com o banco.</li>
+            <li><b>PWA</b> para permitir instalação como “app” em celular/tablet.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="qa card" id="q8" data-title="8 — Gestão de medicamentos">
+        <div class="qaTop">
+          <p class="q">8 — Como será a gestão de medicamentos?</p>
+          <button class="btn btn--soft no-print" data-copy="#q8 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <p>
+            A gestão de medicamentos será feita por meio de prescrições vinculadas ao atendimento do paciente,
+            registrando para cada medicamento: <b>dose</b>, <b>frequência</b>, <b>duração</b>, <b>via</b> e <b>status</b> (ativo/suspenso/finalizado).
+          </p>
+          <p>
+            Isso permite consultar de forma rápida:
+            quais remédios o paciente usa hoje, histórico completo, e quais medicamentos são mais prescritos.
+          </p>
+          <p class="mini">
+            (Opcional – fase avançada) Registrar dispensação/entrega e controle básico de estoque por lote/validade.
+          </p>
+        </div>
+      </article>
+
+      <article class="qa card" id="q9" data-title="9 — Segurança e LGPD">
+        <div class="qaTop">
+          <p class="q">9 — Quais medidas de segurança serão adotadas?</p>
+          <button class="btn btn--soft no-print" data-copy="#q9 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <ul class="list">
+            <li>Autenticação por login e senha.</li>
+            <li>Senhas armazenadas de forma segura (hash).</li>
+            <li>Controle de acesso por perfil (permissões).</li>
+            <li>Restrição de acesso a dados médicos conforme papel do usuário.</li>
+            <li>Logs de auditoria (quem acessou, o que fez e quando).</li>
+            <li>Backups e medidas para evitar acessos indevidos.</li>
+            <li>Direcionamento para conformidade com a LGPD (dados sensíveis).</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="qa card" id="q10" data-title="10 — Evolução por fases">
+        <div class="qaTop">
+          <p class="q">10 — Como o sistema evolui por fases?</p>
+          <button class="btn btn--soft no-print" data-copy="#q10 .a" type="button">Copiar</button>
+        </div>
+        <div class="a">
+          <p><b>Fase inicial:</b> login/logout, cadastro/consulta de pacientes, cadastro de usuários, registro básico de atendimentos.</p>
+          <p><b>Fase intermediária:</b> diagnósticos, prescrições, anexos (documentos/exames) e gestão de medicamentos por paciente.</p>
+          <p><b>Fase avançada:</b> permissões por perfil, logs de auditoria, relatórios, backup/restauração e (opcional) dispensação/estoque.</p>
+        </div>
       </article>
 
     </section>
 
-    <footer class="footer" role="contentinfo">
+    <footer class="footer" aria-label="Rodapé">
       <span>UNIMAR • ADS • 3º termo — Turma B</span>
-      <span class="muted">Fábrica de Projetos Ágeis — Documento do Projeto (2026)</span>
+      <span class="muted">Fábrica de Projetos — Documento para guiar no projeto</span>
     </footer>
-
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
+  <!-- Script principal -->
   <script src="script.js"></script>
+
+  <!-- Mini script só do drawer (bem leve e não conflita com seu script.js) -->
+  <script>
+    (function(){
+      const btnMenu = document.getElementById("btnMenu");
+      const btnClose = document.getElementById("btnCloseMenu");
+      const overlay = document.getElementById("drawerOverlay");
+      const wrap = document.getElementById("sidebarWrap");
+      const sidebar = document.getElementById("sidebar");
+
+      if(!btnMenu || !btnClose || !overlay || !wrap || !sidebar) return;
+
+      function open(){
+        wrap.classList.add("drawerOpen");
+        overlay.hidden = false;
+        btnMenu.setAttribute("aria-expanded","true");
+        document.body.classList.add("noScroll");
+      }
+
+      function close(){
+        wrap.classList.remove("drawerOpen");
+        overlay.hidden = true;
+        btnMenu.setAttribute("aria-expanded","false");
+        document.body.classList.remove("noScroll");
+      }
+
+      btnMenu.addEventListener("click", open);
+      btnClose.addEventListener("click", close);
+      overlay.addEventListener("click", close);
+
+      document.addEventListener("keydown", (e)=>{
+        if(e.key === "Escape") close();
+      });
+    })();
+  </script>
 </body>
 </html>
-
-
