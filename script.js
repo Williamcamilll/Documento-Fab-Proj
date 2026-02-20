@@ -1,138 +1,312 @@
-(() => {
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-  const toastEl = $("#toast");
-  let toastTimer = null;
+html{
+  scroll-behavior:smooth;
+}
 
-  function toast(msg, ms = 1400) {
-    if (!toastEl) return;
-    clearTimeout(toastTimer);
-    toastEl.textContent = msg;
-    toastEl.classList.add("show");
-    toastTimer = setTimeout(() => toastEl.classList.remove("show"), ms);
-  }
+body{
+  font-family:'Inter',system-ui,Segoe UI,Roboto,Arial;
+  background:#eef1f5;
+  color:#1e293b;
+  line-height:1.6;
+}
 
-  // Pega texto "limpo" e com quebras de linha melhores (ul/li, parágrafos etc.)
-  function getReadableText(el) {
-    if (!el) return "";
-    // Clona para não mexer no DOM real
-    const clone = el.cloneNode(true);
+/* ===== PAGE ===== */
+.page{
+  max-width:1100px;
+  margin:40px auto;
+  padding:40px;
+  background:white;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
 
-    // Remove botões e itens não-imprimíveis se existirem dentro
-    $$(".no-print", clone).forEach((n) => n.remove());
+/* ===== HEADER ===== */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:30px;
+  border-bottom:2px solid #e5e7eb;
+  padding-bottom:20px;
+}
 
-    // Transforma <li> em linhas com bullet
-    $$("li", clone).forEach((li) => {
-      li.textContent = "• " + (li.textContent || "").trim();
-    });
+.brand{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
 
-    // Garante que parágrafos virem blocos com quebra
-    $$("p", clone).forEach((p) => {
-      p.textContent = (p.textContent || "").trim();
-      p.insertAdjacentText("afterend", "\n");
-    });
+.seal{
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  background:#0b3b91;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:20px;
+}
 
-    // Garante quebra após listas
-    $$("ul", clone).forEach((ul) => {
-      ul.insertAdjacentText("afterend", "\n");
-    });
+.brandText strong{
+  display:block;
+  font-size:16px;
+}
 
-    let text = (clone.innerText || "")
-      .replace(/\n{3,}/g, "\n\n")
-      .replace(/[ \t]+\n/g, "\n")
-      .trim();
+.brandText span{
+  font-size:13px;
+  color:#64748b;
+}
 
-    return text;
-  }
+.docMeta{
+  text-align:right;
+  font-size:13px;
+  color:#475569;
+}
 
-  async function copyText(text) {
-    text = (text || "").trim();
-    if (!text) return toast("Nada para copiar");
+.docMeta div{
+  margin-bottom:3px;
+}
 
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text);
-        return toast("Copiado ✅");
-      }
-    } catch {}
+/* ===== TITLES ===== */
+.titleRow{
+  margin-bottom:30px;
+}
 
-    try {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      ta.setAttribute("readonly", "");
-      ta.style.position = "fixed";
-      ta.style.left = "-9999px";
-      ta.style.top = "0";
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      ta.remove();
-      toast("Copiado ✅");
-    } catch {
-      toast("Não consegui copiar 😕");
-    }
-  }
+h1{
+  font-size:26px;
+  font-weight:800;
+  color:#0f172a;
+  margin-bottom:6px;
+}
 
-  // Print / PDF
-  $("#btnPrint")?.addEventListener("click", () => window.print());
+.subtitle{
+  color:#64748b;
+  font-size:14px;
+}
 
-  // Botões individuais de copiar via data-copy
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-copy]");
-    if (!btn) return;
+h2{
+  font-size:20px;
+  margin-bottom:14px;
+  font-weight:700;
+  color:#0f172a;
+}
 
-    const target = btn.getAttribute("data-copy");
-    const el = $(target);
-    if (!el) return toast("Não achei o texto pra copiar");
+/* ===== CONTENT ===== */
+.content{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
 
-    // Se for lista de integrantes, formata melhor
-    if (target === "#groupList") {
-      const items = $$("#groupList li").map((li) => li.textContent.trim()).filter(Boolean);
-      const text = "Integrantes:\n" + items.map((x) => `• ${x.replace(/\s+/g, " ")}`).join("\n");
-      return copyText(text);
-    }
+/* ===== CARDS ===== */
+.card{
+  background:#f8fafc;
+  padding:24px;
+  border-radius:12px;
+  border:1px solid #e2e8f0;
+  transition:.25s;
+}
 
-    copyText(getReadableText(el));
-  });
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(0,0,0,.05);
+}
 
-  // Copiar tudo (agora pega TODOS os QAs automaticamente)
-  $("#btnCopyAll")?.addEventListener("click", () => {
-    const parts = [];
+/* ===== LIST ===== */
+.list{
+  padding-left:20px;
+  margin-top:10px;
+}
 
-    // Cabeçalho principal
-    const title = $("h1")?.innerText?.trim();
-    if (title) parts.push(title);
+.list li{
+  margin-bottom:6px;
+}
 
-    const subtitle = $(".subtitle")?.innerText?.trim();
-    if (subtitle) parts.push(subtitle);
+/* ===== QA ===== */
+.qa p{
+  margin-bottom:10px;
+}
 
-    // Meta (curso, termo etc.)
-    const metaLines = $$(".docMeta > div").map((d) => d.innerText.trim()).filter(Boolean);
-    if (metaLines.length) parts.push(metaLines.join("\n"));
+/* ===== INFO GRID ===== */
+.infoGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
 
-    // Órgão e grupo
-    const org = $(".infoGrid .info strong")?.innerText?.trim();
-    if (org) parts.push("Órgão/Tema:\n" + org);
+.info{
+  background:#f1f5f9;
+  padding:16px;
+  border-radius:10px;
+  border:1px solid #e2e8f0;
+}
 
-    const groupName = $$(".infoGrid .info strong")[1]?.innerText?.trim();
-    const leader = $(".infoGrid .info .mini b")?.innerText?.trim();
-    if (groupName) parts.push(`Grupo:\n${groupName}${leader ? `\nLíder: ${leader}` : ""}`);
+.info small{
+  color:#64748b;
+}
 
-    // Integrantes
-    const members = $$("#groupList li").map((li) => li.textContent.trim()).filter(Boolean);
-    if (members.length) parts.push("Integrantes:\n" + members.map((m) => `• ${m}`).join("\n"));
+.info strong{
+  display:block;
+  font-size:16px;
+}
 
-    // Todos os blocos de pergunta/resposta (qualquer card .qa)
-    const cards = $$(".qa.card");
-    cards.forEach((card) => {
-      const q = $(".q", card)?.innerText?.trim();
-      const aEl = $(".a", card);
-      const a = getReadableText(aEl);
-      if (q && a) parts.push(`${q}\n${a}`);
-    });
+.mini{
+  font-size:12px;
+  color:#64748b;
+}
 
-    copyText(parts.join("\n\n"));
-  });
-})();
+/* ===== BUTTONS ===== */
+.btn{
+  background:#0b3b91;
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:scale(1.03);
+}
+
+.btn--ghost{
+  background:#e2e8f0;
+  color:#0f172a;
+}
+
+.btn--soft{
+  background:#e0e7ff;
+  color:#1e3a8a;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+}
+
+/* ===== GROUP ===== */
+.groupHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.pill{
+  background:#0b3b91;
+  color:white;
+  padding:2px 8px;
+  border-radius:20px;
+  font-size:11px;
+  margin-left:6px;
+}
+
+/* ===== SECTION TITLE ===== */
+.sectionTitle{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  background:#0b3b91;
+  border-radius:50%;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  margin-top:30px;
+  border-top:2px solid #e5e7eb;
+  padding-top:14px;
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  color:#64748b;
+}
+
+/* ===== TOAST ===== */
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#0b3b91;
+  color:white;
+  padding:10px 18px;
+  border-radius:30px;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.toast.show{
+  opacity:1;
+}
+
+/* ===== PRINT ===== */
+@media print{
+
+body{
+  background:white;
+}
+
+.page{
+  box-shadow:none;
+  margin:0;
+  padding:0;
+}
+
+.no-print{
+  display:none;
+}
+
+.card{
+  border:none;
+  background:white;
+  padding:0;
+}
+
+}
+
+/* ===== RESPONSIVO ===== */
+@media(max-width:900px){
+
+.page{
+  margin:0;
+  border-radius:0;
+  padding:24px;
+}
+
+.top{
+  flex-direction:column;
+  gap:16px;
+}
+
+.docMeta{
+  text-align:left;
+}
+
+.infoGrid{
+  grid-template-columns:1fr;
+}
+
+.footer{
+  flex-direction:column;
+  gap:6px;
+}
+
+}
 
